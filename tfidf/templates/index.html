@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TF-IDF Analyzer</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload a Text File</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="file" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if results %}
+            <h2>Top 50 Words by IDF</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Word</th>
+                        <th>Count (TF)</th>
+                        <th>TF</th>
+                        <th>IDF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for word, count, tf, idf in results %}
+                    <tr>
+                        <td>{{ word }}</td>
+                        <td>{{ count }}</td>
+                        <td>{{ tf|floatformat:5 }}</td>
+                        <td>{{ idf|floatformat:5 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>
