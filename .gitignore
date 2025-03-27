@@ -6,11 +6,11 @@ __pycache__/
 # Virtual environment
 venv/
 
-Pipfile.lock
-Pipfile
+.Pipfile.lock
+.Pipfile
 
 # Django database
-db.sqlite3
+.db.sqlite3
 
 # IDE files
 .vscode/
